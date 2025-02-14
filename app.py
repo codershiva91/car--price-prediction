@@ -5,7 +5,7 @@ from flask_cors import CORS, cross_origin
 import pickle
 import pandas as pd
 import numpy as np
-
+import os
 # Initialize Flask App
 app = Flask(__name__)
 cors = CORS(app)
@@ -96,6 +96,9 @@ def predict():
 
 
 # Run Server on Port 5001
+# if __name__ == "__main__":
+#     app.run(port=5001, debug=True)
+
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
 
